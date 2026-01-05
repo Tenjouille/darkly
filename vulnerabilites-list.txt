@@ -1,17 +1,17 @@
 SQL injection => sql_injection | OK
 SQL injection advanced => sql_injection_image | a rediger
-Include
-XSS basic
-XSS advanced
 Cookies => cookie | OK
 Spoof (curl) => Spoofing | a rediger
 Admin (htpasswd) => htpasswd | ok
 Bruteforce (member) => brute_force | OK
-File upload
 Redirect => open_redirect | OK
 Guess (hidden file) => robocop | OK
 Survey => | OK
 Recover => | OK
+Include => | OK
+File upload
+XSS basic
+XSS advanced
 
 Bonus
 XSS understanding
