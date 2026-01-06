@@ -1,13 +1,13 @@
 SQL injection           =>  sql_injection           | OK | Tanguy
 SQL injection advanced  =>  sql_injection_image     | OK | Tanguy
 Cookies                 =>  cookie                  | OK | Claire
-Spoof (curl)            =>  Spoofing                | ?? | Claire
+Spoof (curl)            =>  Spoofing                | OK | Claire
 Admin (htpasswd)        =>  htpasswd                | ?? | Tanguy
 Bruteforce (member)     =>  brute_force             | OK | Tanguy
 Redirect                =>  open_redirect           | OK | Claire
 Guess (hidden file)     =>  robocop                 | OK | Claire
 Survey                  =>                          | OK | Tanguy
-Recover (forgot pwd)    =>                          | OK | Claire
+Recover (forgot pwd)    =>  hidden_field            | OK | Claire
 Include                 =>  local_file_inclusion    | OK | Claire
 XSS basic               =>                          | ?? | Tanguy
 XSS advanced            =>                          | ?? | Tanguy
