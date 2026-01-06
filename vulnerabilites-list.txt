@@ -1,20 +1,17 @@
-Cookies => cookie | OK
-Spoof (curl) => Spoofing | a rediger
-Redirect => open_redirect | OK
-Guess (hidden file) => robocop | OK
-Recover => | OK
-Include => | OK
-
+SQL injection           =>  sql_injection           | OK | Tanguy
+SQL injection advanced  =>  sql_injection_image     | OK | Tanguy
+Cookies                 =>  cookie                  | OK | Claire
+Spoof (curl)            =>  Spoofing                | ?? | Claire
+Admin (htpasswd)        =>  htpasswd                | ?? | Tanguy
+Bruteforce (member)     =>  brute_force             | OK | Tanguy
+Redirect                =>  open_redirect           | OK | Claire
+Guess (hidden file)     =>  robocop                 | OK | Claire
+Survey                  =>                          | OK | Tanguy
+Recover (forgot pwd)    =>                          | OK | Claire
+Include                 =>  local_file_inclusion    | OK | Claire
+XSS basic               =>                          | ?? | Tanguy
+XSS advanced            =>                          | ?? | Tanguy
 File upload
-
-Admin (htpasswd) => htpasswd | ok
-XSS basic
-XSS advanced
-
-Survey => | OK
-SQL injection => sql_injection | OK
-SQL injection advanced => sql_injection_image | a rediger
-Bruteforce (member) => brute_force | OK
 
 Bonus
 XSS understanding
