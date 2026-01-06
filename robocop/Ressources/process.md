@@ -1,7 +1,9 @@
 # Exploitation du fichier robots.txt pour accéder à du contenu sensible
 
 
-Le fichier `robots.txt` est une convention visant à indiquer aux robots d'exploration (web crawlers) quelles parties d'un site web ne doivent pas être explorées. Son objectif est d'éviter de surcharger son site de demandes et d'optimiser le référencement SEO.
+Le fichier `robots.txt` est une convention visant à indiquer aux robots d'exploration (web crawlers) quelles parties d'un site web ne doivent pas être explorées. 
+
+Son objectif est d'éviter de surcharger son site de demandes et d'optimiser le référencement SEO.
 
 Il est accessible publiquement à la racine du site (ex: `http://site.com/robots.txt`)
 

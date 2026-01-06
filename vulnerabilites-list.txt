@@ -1,17 +1,17 @@
-SQL injection           =>  sql_injection           | OK
-SQL injection advanced  =>  sql_injection_image     | a rediger
+SQL injection           =>  sql_injection           |
+SQL injection advanced  =>  sql_injection_image     |
 Cookies                 =>  cookie                  | OK | Claire
-Spoof (curl)            =>  Spoofing                | | Claire
-Admin (htpasswd)        =>  htpasswd                | ok
-Bruteforce (member)     =>  brute_force             | OK
+Spoof (curl)            =>  spoofing                | OK | Claire
+Admin (htpasswd)        =>  htpasswd                |
+Bruteforce (member)     =>  brute_force             |
 Redirect                =>  open_redirect           | OK | Claire
 Guess (hidden file)     =>  robocop                 | OK | Claire
-Survey                  =>                          | OK
-Recover (forgot pwd)    =>                          | OK | Claire
+Survey                  =>                          |
+Recover (forgot pwd)    =>  passwd_recover          |
 Include                 =>  local_file_inclusion    | OK | Claire
-File upload
-XSS basic               =>                          | OK
-XSS advanced            =>                          | OK 
+File upload             =>
+XSS basic               =>                          |
+XSS advanced            =>                          |
 
 Bonus
 XSS understanding
