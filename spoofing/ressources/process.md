@@ -13,7 +13,7 @@ Le Header Spoofing (usurpation d'en-têtes HTTP) consiste à modifier les en-tê
 
 ## Détection de la vulnérabilité
 
-En inspectant le code source HTML de la page dans les DevTools, on trouve des commentaires révélateurs :
+En inspectant le code source HTML de la page dans les DevTools, on trouve des commentaires intéressants :
 
 ```html
 <!--
@@ -99,16 +99,7 @@ La requête avec les en-têtes falsifiés trompe le serveur qui croit que la req
 - Détecter les patterns d'attaque (changements fréquents de User-Agent)
 - Alerter sur les accès depuis des sources inattendues
 
-### Exemple de configuration sécurisée
-```php
-// ❌ MAUVAIS : Contrôle basé uniquement sur le Referer
-if ($_SERVER['HTTP_REFERER'] === 'https://www.nsa.gov/') {
-    // Accès accordé
-}
-
-// ✅ BON : Authentification avec token et validation serveur
-if (validateSessionToken($_SESSION['token']) &&
-    hasPermission($user, 'admin')) {
-    // Accès accordé après vérification multi-facteurs
-}
-``` 
+### Sources
+OWASP
+Wikipedia
+Claude

@@ -43,13 +43,11 @@ The server returned different JavaScript alerts depending on the depth:
 
 ### 5. Successful Exploitation
 
-Exploitation with **6 `../` sequences** successfully reached the `/etc/passwd` file and triggered the validation:
+Exploitation with **7 `../` sequences** successfully reached the `/etc/passwd` file and triggered the validation:
 
 ```
-http://localhost:8080/index.php?page=../../../../../../etc/passwd
+http://localhost:8080/index.php?page=../../../../../../../etc/passwd
 ```
-
-**Flag obtained:** `b12c4b2cb8094750ae121a676269aa9e2872d07c06e429d25a63196ec1c8c1d0`
 
 ## Vulnerability Impact
 
@@ -65,3 +63,8 @@ This vulnerability allows an attacker to:
 2. **Path traversal sanitization**: Use `basename()` or `realpath()` to eliminate `../` sequences
 3. **Chroot or access restriction**: Limit file access to a specific directory
 4. **Avoid dynamic inclusion**: Use a secure routing system instead of directly including files based on user parameters
+
+### Sources
+OWASP
+Claude
+
