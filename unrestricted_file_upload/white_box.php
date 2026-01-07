@@ -1,1 +1,0 @@
-<img src="images/PRISM_logo.png">
