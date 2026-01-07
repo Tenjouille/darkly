@@ -12,7 +12,7 @@ The scheme of the URL
 ### `<media-type>`
 
 The MIME type indicating the type of data, such as image/jpeg for a JPEG image file. If omitted, defaults to text/plain;charset=US-ASCII.
-
+ 
 ### `;base64`
 
 Indicates that the data should be base64-decoded
