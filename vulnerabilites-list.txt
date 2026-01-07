@@ -11,7 +11,7 @@ Recover (forgot pwd)    =>  hidden_field            | OK | Claire
 Include                 =>  local_file_inclusion    | OK | Claire
 XSS basic               =>                          | ?? | Tanguy
 XSS advanced            =>                          | ?? | Tanguy
-File upload
+File upload             =>   file_upload            | OK | Claire
 
 Bonus
 XSS understanding
