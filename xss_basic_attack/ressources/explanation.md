@@ -13,4 +13,4 @@ To spot an XSS attack opportunity, search for a page where an input will be late
 
 ## How do you counter it ?
 
-The best way to prevent an XSS attack is to encode special characters sent via requests, to interpret them as characters. 
+The best way to prevent an XSS attack is to escape special characters sent via requests, to interpret them as characters. 
